@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour {
 	public bool canMove = false;
 	public float gravity = 1.0f;
 	public float antigravity = 1.5f;
-	public Vector3 wind = new Vector3 (0.5f, 0, 0);
+	public Wind wind;
 
 	void Update () {
 		if (canMove) {
@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour {
 			}
 
 			// Add windforce
-			moveDirection += wind;
+			moveDirection += wind.getWind(gameObject.transform.position);
 
 			// Apply force
 			moveDirection *= speed;
