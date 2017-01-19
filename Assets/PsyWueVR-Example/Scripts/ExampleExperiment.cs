@@ -19,38 +19,13 @@ public class ExampleExperiment : Experiment
 		//A function can be made with Lamda function ( ()=>{} ) or by calling a void function 
 
 		//Functions/Actions made with Lamda
-		phases.Add (new ExperimentPhase (5, ()=>{
+		/*phases.Add (new ExperimentPhase (5, ()=>{
 			status = "Possibilities";
 			instruction = "You can iterate your own methods with next. Execute everything in next or do everything else you please.";
-		}));
+		}));*/
 
-		phases.Add (new ExperimentPhase (5, ()=>{
-			isBlackout = true;
-			status = "Blackout";
-			instruction = "The blackout can be activated just by setting the boolean \'isBackout\'";
-		}));
-			
-		phases.Add (new ExperimentPhase (1, ()=>{
-			isBlackout = false;
-			status = "Blackout off";
-			instruction = "";
-		}));
-
-		phases.Add (new ExperimentPhase (5, ()=>{
-			isBlackout = true;
-			status = "Instructions";
-			instruction = "The instructions can be set by setting the string \'instruction' and the status can be set by setting the string \'status\'";
-		}));
-	
-		phases.Add (new ExperimentPhase (5, ()=>{
-			isBlackout = true;
-			status = "Walk instructions";
-			instruction = "The phase timer can be paused and while different actions accour.\nPlease walk to the red box in the next phase to resume. (<a>,<w>,<s>,<d>)";
-		}));
-			
 		//Functions/Actions made with void Methods
 		phases.Add (new ExperimentPhase (1, walkToRead));
-		phases.Add (new ExperimentPhase (5, guiDialog));
 		phases.Add (new ExperimentPhase (1, rate));
 		phases.Add (new ExperimentPhase (5, end));
 
