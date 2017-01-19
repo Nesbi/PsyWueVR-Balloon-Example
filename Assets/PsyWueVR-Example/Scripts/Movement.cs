@@ -3,12 +3,12 @@ using System.Collections;
 
 public class Movement : MonoBehaviour {
 
-	public float speed = 5.0F;
 	private Vector3 moveDirection = Vector3.zero;
 	public bool canMove = false;
-	public float gravity = 1.0f;
-	public float antigravity = 1.5f;
+	public float gravity = 2f;
+	public float antigravity = 3f;
 	public Wind wind;
+	public GameObject fire;
 
 	void Update () {
 		if (canMove) {
@@ -17,23 +17,23 @@ public class Movement : MonoBehaviour {
 
 			// Add gravity
 			moveDirection = new Vector3 (0, gravity*(-1.0f), 0);
-			moveDirection = transform.TransformDirection (moveDirection);
 
-			if (Input.GetButton ("Fire1")) {
-				Debug.Log("test");
-
+			fire.SetActive (false);
+			if (Input.GetButton ("Fire1") || Input.GetButton("Submit")) {
 				// Add antigravity
-				moveDirection = moveDirection + (new Vector3 (0, antigravity, 0));
-				moveDirection = transform.TransformDirection (moveDirection);
-
+				dofire();
 			}
 
 			// Add windforce
 			moveDirection += wind.getWind(gameObject.transform.position);
 
 			// Apply force
-			moveDirection *= speed;
 			controller.Move (moveDirection * Time.deltaTime);
 		}
+	}
+
+	private void dofire(){
+		moveDirection = moveDirection + (new Vector3 (0, antigravity, 0));
+		fire.SetActive (true);
 	}
 }
